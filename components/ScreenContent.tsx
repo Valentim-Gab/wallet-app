@@ -1,12 +1,12 @@
-import { YStack, H2, Separator, Theme } from 'tamagui';
+import { YStack, H2, Separator, Theme } from 'tamagui'
 
-import { EditScreenInfo } from './EditScreenInfo';
+import { EditScreenInfo } from './EditScreenInfo'
 
 type ScreenContentProps = {
-  title: string;
-  path: string;
-  children?: React.ReactNode;
-};
+  title: string
+  path: string
+  children?: React.ReactNode
+}
 
 export const ScreenContent = ({ title, path, children }: ScreenContentProps) => {
   return (
@@ -18,5 +18,5 @@ export const ScreenContent = ({ title, path, children }: ScreenContentProps) => 
         {children}
       </YStack>
     </Theme>
-  );
-};
+  )
+}
