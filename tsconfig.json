@@ -3,9 +3,12 @@
   "compilerOptions": {
     "strict": true,
 
-    "baseUrl": ".",
+    "baseUrl": "./src",
     "paths": {
-      "~/*": ["*"]
+      "*": ["*"],
+      "app/*": ["app/*"],
+      "components/*": ["components/*"],
+      "assets/*": ["assets/*"]
     }
   },
   "include": ["**/*.ts", "**/*.tsx", ".expo/types/**/*.ts", "expo-env.d.ts"]
