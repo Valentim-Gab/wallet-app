@@ -1,9 +1,8 @@
 import { createAnimations } from '@tamagui/animations-react-native'
-import { createInterFont } from '@tamagui/font-inter'
 import { createMedia } from '@tamagui/react-native-media-driver'
 import { shorthands } from '@tamagui/shorthands'
 import { themes, tokens } from '@tamagui/themes'
-import { createTamagui, styled, SizableText, H1, YStack } from 'tamagui'
+import { createTamagui, styled, SizableText, H1, YStack, createFont } from 'tamagui'
 
 const animations = createAnimations({
   bouncy: {
@@ -25,9 +24,32 @@ const animations = createAnimations({
   },
 })
 
-const headingFont = createInterFont()
+const createPoppins = createFont({
+  family: 'Poppins',
+  size: {
+    1: 11,
+    2: 12,
+    3: 13,
+    4: 14,
+    true: 14,
+    5: 16,
+    6: 18,
+    7: 20,
+    8: 23,
+    9: 30,
+    10: 46,
+    11: 55,
+    12: 62,
+    13: 72,
+    14: 92,
+    15: 114,
+    16: 134,
+  },
+})
 
-const bodyFont = createInterFont()
+const headingFont = createPoppins
+
+const bodyFont = createPoppins
 
 export const Container = styled(YStack, {
   flex: 1,
