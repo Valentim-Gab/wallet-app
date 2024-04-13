@@ -1,16 +1,25 @@
 import { Stack, Link } from 'expo-router'
-import { StyleSheet, Text } from 'react-native'
+import { StyleSheet } from 'react-native'
+import { Text, Button as BtnTamagui, useTheme } from 'tamagui'
 
 import { Button } from '@/components/Button'
 import { Container } from '@/components/Container'
 import { ScreenContent } from '@/components/ScreenContent'
+import { useAppTheme } from '@/contexts/AppThemeProvider'
 
-export default function Home() {
+export default function Home2() {
+  const appTheme = useAppTheme()
+
   return (
     <>
       <Stack.Screen
         options={{
-          headerTitle: () => <Text style={styles.headerTitle}>Home Edited</Text>,
+          headerTitle: () => (
+            <Text style={styles.headerTitle} color="$color">
+              Home Edited
+            </Text>
+          ),
+          headerStyle: { backgroundColor: useTheme().background.val },
         }}
       />
       <Container>
@@ -18,6 +27,13 @@ export default function Home() {
         <Link href={{ pathname: '/details', params: { name: 'Dan' } }} asChild>
           <Button title="Show Details" />
         </Link>
+        <BtnTamagui
+          onPress={() => {
+            appTheme.toggleTheme()
+          }}
+        >
+          ChangeTheme
+        </BtnTamagui>
       </Container>
     </>
   )
@@ -26,7 +42,6 @@ export default function Home() {
 const styles = StyleSheet.create({
   headerTitle: {
     fontSize: 24,
-    color: 'purple',
     fontFamily: 'DMSerifDisplay',
   },
 })

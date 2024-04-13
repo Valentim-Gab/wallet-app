@@ -4,6 +4,8 @@ import { shorthands } from '@tamagui/shorthands'
 import { themes, tokens } from '@tamagui/themes'
 import { createTamagui, styled, SizableText, H1, YStack, createFont } from 'tamagui'
 
+import { COLORS } from '@/styles/theme'
+
 const animations = createAnimations({
   bouncy: {
     damping: 10,
@@ -25,7 +27,7 @@ const animations = createAnimations({
 })
 
 const createPoppins = createFont({
-  family: 'Poppins',
+  family: 'PoppinsRegular',
   size: {
     1: 11,
     2: 12,
@@ -74,8 +76,8 @@ export const Subtitle = styled(SizableText, {
 
 export const Button = styled(YStack, {
   alignItems: 'center',
-  backgroundColor: '#6366F1',
-  borderRadius: 28,
+  backgroundColor: COLORS.PURPLE,
+  borderRadius: 8,
   hoverStyle: {
     backgroundColor: '#5a5fcf',
   },
@@ -99,22 +101,34 @@ export const ButtonText = styled(SizableText, {
 })
 
 const config = createTamagui({
-  light: {
-    color: {
-      background: 'gray',
-      text: 'black',
-    },
-  },
   defaultFont: 'body',
   animations,
-  shouldAddPrefersColorThemes: true,
-  themeClassNameOnRoot: true,
+  shouldAddPrefersColorThemes: false,
+  themeClassNameOnRoot: false,
   shorthands,
   fonts: {
     body: bodyFont,
     heading: headingFont,
   },
-  themes,
+  themes: {
+    ...themes,
+    light: {
+      background: '#fff',
+      backgroundHover: '#fff',
+      backgroundPress: '#fff',
+      backgroundFocus: '#fff',
+      borderColor: '#fff',
+      color: '#000',
+    },
+    dark: {
+      background: '#111',
+      backgroundHover: '#111',
+      backgroundPress: '#111',
+      backgroundFocus: '#111',
+      borderColor: '#111',
+      color: '#fff',
+    },
+  },
   tokens,
   media: createMedia({
     xs: { maxWidth: 660 },

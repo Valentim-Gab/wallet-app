@@ -1,4 +1,4 @@
-import { YStack, H2, Separator, Theme } from 'tamagui'
+import { YStack, H2, Separator, useThemeName, Text } from 'tamagui'
 
 import { EditScreenInfo } from './EditScreenInfo'
 
@@ -10,13 +10,12 @@ type ScreenContentProps = {
 
 export const ScreenContent = ({ title, path, children }: ScreenContentProps) => {
   return (
-    <Theme name="light">
-      <YStack flex={1} alignItems="center" justifyContent="center">
-        <H2>{title}</H2>
-        <Separator />
-        <EditScreenInfo path={path} />
-        {children}
-      </YStack>
-    </Theme>
+    <YStack flex={1} alignItems="center" justifyContent="center">
+      <H2>{title}</H2>
+      <Separator />
+      <EditScreenInfo path={path} />
+      {children}
+      <Text color="$color">{useThemeName()}</Text>
+    </YStack>
   )
 }
