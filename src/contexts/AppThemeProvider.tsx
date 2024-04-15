@@ -1,7 +1,7 @@
 import React, { ReactNode, createContext, useContext, useState } from 'react'
 import { Theme, ThemeName } from 'tamagui'
 
-const AppThemeContext = createContext({ theme: 'dark', toggleTheme: () => {} })
+const AppThemeContext = createContext({ theme: '', toggleTheme: () => {} })
 
 interface ThemeContextType {
   children: ReactNode

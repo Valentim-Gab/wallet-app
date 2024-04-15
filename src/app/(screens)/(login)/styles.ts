@@ -18,4 +18,5 @@ export const Description = styled(Text, {
   marginTop: '$10',
   fontSize: '$4',
   fontFamily: FONTS.POPPINS_LIGHT as any,
+  color: '$color',
 })

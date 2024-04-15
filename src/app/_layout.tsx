@@ -3,14 +3,13 @@ import { SplashScreen, Stack } from 'expo-router'
 import { StatusBar } from 'expo-status-bar'
 import { useEffect } from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
-import { TamaguiProvider } from 'tamagui'
+import { TamaguiProvider, useTheme } from 'tamagui'
 
 import config from '../../tamagui.config'
 
-import { AppThemeProvider } from '@/contexts/AppThemeProvider'
+import { AppThemeProvider, useAppTheme } from '@/contexts/AppThemeProvider'
 
 export default function Layout() {
-  const session = false
   const [loaded] = useFonts({
     PoppinsLight: require('@/assets/fonts/Poppins/Poppins-Light.ttf'),
     PoppinsRegular: require('@/assets/fonts/Poppins/Poppins-Regular.ttf'),
@@ -29,22 +28,31 @@ export default function Layout() {
 
   if (!loaded) return null
 
-  // function hasSession() {
-  //   return session ? <Stack /> : <Login />
-  // }
-
   return (
     <TamaguiProvider config={config}>
-      <SafeAreaView
-        style={{
-          flex: 1,
-        }}
-      >
-        <AppThemeProvider loadedTheme="light">
-          <StatusBar style="dark" translucent backgroundColor="transparent" />
-          <Stack screenOptions={{ header: () => null }} />
-        </AppThemeProvider>
-      </SafeAreaView>
+      <AppThemeProvider loadedTheme="dark">
+        <Children />
+      </AppThemeProvider>
     </TamaguiProvider>
+  )
+}
+
+function Children() {
+  const { theme } = useAppTheme()
+
+  return (
+    <SafeAreaView
+      style={{
+        flex: 1,
+        backgroundColor: theme === 'light' ? '#fff' : '#111',
+      }}
+    >
+      <StatusBar
+        style={theme === 'light' ? 'dark' : 'light'}
+        translucent
+        backgroundColor="transparent"
+      />
+      <Stack screenOptions={{ headerShown: false }} />
+    </SafeAreaView>
   )
 }
