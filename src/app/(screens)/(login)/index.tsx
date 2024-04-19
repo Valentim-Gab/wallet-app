@@ -6,7 +6,9 @@ import { Container } from '@/components/Container'
 import { Link } from 'expo-router'
 import { Button } from '@/components/Button'
 import { useAppTheme } from '@/contexts/AppThemeProvider'
-import { Text } from 'tamagui'
+import ButtonSocialGoogle from '@/components/buttons/ButtonSocialGoogle'
+import { View, YStack } from 'tamagui'
+import ButtonSocialFacebook from '@/components/buttons/ButtonSocialFacebook'
 
 export default function Login() {
   const { toggleTheme } = useAppTheme()
@@ -16,7 +18,11 @@ export default function Login() {
       <Container>
         <ContentHeader>
           <Title>Seja bem vindo(a) {'\n'} a Wallet App</Title>
-          <Description>Entrar com rede sociais</Description>
+          <Description>Entrar com</Description>
+          <YStack flexDirection="row" gap="$4" marginTop="$4">
+            <ButtonSocialGoogle title="Google" onPress={() => {}} />
+            <ButtonSocialFacebook title="Facebook" onPress={() => {}} />
+          </YStack>
         </ContentHeader>
         {/* <ContentHeader>
 

@@ -9,7 +9,7 @@ interface ThemeContextType {
 }
 
 export function AppThemeProvider({ children, loadedTheme }: ThemeContextType) {
-  const [theme, setTheme] = useState<string | ThemeName>(loadedTheme ?? 'dark')
+  const [theme, setTheme] = useState<string | ThemeName>(loadedTheme ?? 'light')
 
   const toggleTheme = () => {
     setTheme((prevTheme) => (prevTheme === 'light' ? 'dark' : 'light'))

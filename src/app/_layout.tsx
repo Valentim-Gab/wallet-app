@@ -30,7 +30,7 @@ export default function Layout() {
 
   return (
     <TamaguiProvider config={config}>
-      <AppThemeProvider loadedTheme="dark">
+      <AppThemeProvider>
         <Children />
       </AppThemeProvider>
     </TamaguiProvider>
